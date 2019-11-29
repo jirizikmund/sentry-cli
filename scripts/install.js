@@ -135,6 +135,9 @@ if (process.env.SENTRYCLI_LOCAL_CDNURL) {
   process.on('exit', () => server.close());
 }
 
+console.log('dirname:_' + __dirname);
+console.log('process.cwd():_' + process.cwd());
+
 downloadBinary()
   .then(() => checkVersion())
   .then(() => process.exit(0))
