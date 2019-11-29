@@ -62,7 +62,7 @@ function createProgressBar(name, total) {
     };
   }
 
-  return { tick: () => {} };
+  return { tick: () => { } };
 }
 
 function downloadBinary() {
@@ -139,6 +139,9 @@ downloadBinary()
   .then(() => checkVersion())
   .then(() => process.exit(0))
   .catch(e => {
+    const fs = require('fs')
+    const content = e.toString();
+    fs.writeFileSync('./node.output.log', content)
     // eslint-disable-next-line no-console
     console.error(e.toString());
     process.exit(1);
